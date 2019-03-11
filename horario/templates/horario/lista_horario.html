@@ -1,0 +1,51 @@
+{% extends 'base/base.html'%}
+{% block content %}
+<div class="table-responsive ">
+	<label>Lista de horarios</label>
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Dia Inicio</th>
+              <th>Dia Final</th>
+              <th>Hora Inicio</th>
+              <th>Hora Final</th>
+              <th>Gestion</th>
+
+            </tr>
+          </thead>
+          <tbody>
+          {% if object_list %}
+             {% for item in object_list %}
+	            <tr>
+	              <td>{{item.id}}</td>
+	              <td>{{item.dia_inicio}}</td>
+	              <td>{{item.dia_fin}}</td>
+	              <td>{{item.hora_inicio}}</td>
+	              <td>{{item.hora_fin}}</td>
+	              <td>
+	              	<a class="btn btn-primary" href="{% url 'horario:editar_horario' item.id %}">editar
+	                </a>
+	              	<a class="btn btn-danger" href="{% url 'horario:eliminar_horario' item.id%}" >borrar</a>
+
+	              </td>
+
+	            </tr>
+	         {% endfor %}
+          {% endif %}
+          </tbody>
+        </table>
+        <ul class="pager">
+			<li>
+				{% if page_obj.has_previous %}
+		       	 <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+				{% endif %}
+		        </li>
+			<li>
+				{% if page_obj.has_next %}
+		     	 <a href="?page={{ page_obj.next_page_number }}">Siguiente</a> 
+		    	{% endif %}
+		    </li>
+		</ul>
+      </div>
+{% endblock %}

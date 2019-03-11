@@ -1,0 +1,87 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+  {% if query  %}
+		<div class="col-12 mt-5 mb-3" style="margi-top:80px;">
+			frase buscada: {{query}}
+			<hr/>
+		</div>
+	{% else %}
+	<div class="col-12 col-md-8 mx-auto">
+	    {% include "search/buscar.html" %}
+	</div>
+	<div class="col-12">
+		<hr/>
+	</div>
+  {% endif %}
+{% if object_list %}
+<div class="table-responsive mt-5">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tipo</th>
+              <th>Descripcion</th>
+              <th>Tipo Empresa</th>
+              <th>Region</th>
+              <th>Actividad</th>
+              <th>Horario</th>
+            </tr>
+          </thead>
+          <tbody>
+             {% for item in object_list %}
+	            <tr>
+	              <td>{{item.id}}</td>
+	              <td>{{item.get_tipo_display}}</td>
+	              <td>{{item.descripcion}}</td>
+	              <td>{{item.get_tipo_empresa_display}}</td>
+
+	              <td>
+	              	{{item.get_region_display}}
+
+	              		
+	              <td>{{item.actividad_economica}}</td>
+	              <td>
+	              	<ul >
+	              		{% for hora_item in item.horario.all %}
+	              		  <li>{{hora_item.dia_inicio}}-{{hora_item.dia_fin}} {{hora_item.hora_inicio}}-{{hora_item.hora_fin}}</li>
+	              		{% endfor %}
+	              	</ul>
+	              </td>
+	              <td>
+	              	<a class="btn btn-primary" href="{% url 'jornada:editar_jornada' item.id %}">editar
+	                </a>
+	              	<a class="btn btn-danger" href="{% url 'jornada:eliminar_jornada' item.id%}" >borrar</a>
+
+	              </td>
+
+	            </tr>
+	         {% endfor %}
+         
+          </tbody>
+        </table>
+        <ul class="pager">
+			<li>
+				{% if page_obj.has_previous %}
+		       	 <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+				{% endif %}
+		        </li>
+			<li>
+				{% if page_obj.has_next %}
+		     	 <a href="?page={{ page_obj.next_page_number }}">Siguiente</a> 
+		    	{% endif %}
+		    </li>
+		</ul>
+      </div>
+{% else %}
+<div class="row">
+<div class="jumbotron col-12 col-sm-12 col-md-12">
+	<h1>No existen coincidencias par su busqueda!!</h1>
+</div>	
+</div>
+
+
+{% endif %}
+
+{% endblock%}
