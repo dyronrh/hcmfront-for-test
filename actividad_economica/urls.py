@@ -20,7 +20,7 @@ urlpatterns = [
     # urls de las APIS CON REST FRAMEWORK
     url(r'^dlt-api/(?P<pk>\d+)/$',ActividadDestroyAPIView.as_view()),
     url(r'^upd-api/(?P<pk>\d+)/$',ActividadtUpdateAPIView.as_view()),
-    url(r'^add-api$',ActividadCreateAPIView.as_view()),
+    url(r'^add-api',ActividadCreateAPIView.as_view()),
     url(r'^lstapi$',ActividadListaAPIView.as_view(), name="lstapi"),
     url(r'^lstaapi$',ActividadList.as_view(), name="lstaapi"),
     	

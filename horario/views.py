@@ -15,21 +15,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 # Crear las vistas a continuacion.
 
-# class HorarioList(generics.ListCreateAPIView):
-#     queryset = HorarioClass.objects.all()
-#     serializer_class = HorarioSerializer
-#     permission_classes = (IsAuthenticated,)
-
-
-#     def list(self, request):
-#         # Note the use of `get_queryset()` instead of `self.queryset`
-#         queryset = self.get_queryset()
-#         serializer = HorarioSerializer(queryset, many=True)
-#         serializer_context = {
-#             'request': request,
-#         }
-#         return Response(serializer.data)
-
 
 class HoraListaAPIView(generics.ListCreateAPIView):
 	authentication_classes = (SessionAuthentication, BasicAuthentication)

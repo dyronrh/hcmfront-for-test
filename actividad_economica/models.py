@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Creando el modelo Actividad economica.
 class ActividadEconomicaClass(models.Model):
 	actividad = models.CharField(max_length=50,null=True, blank=True)
 

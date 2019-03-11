@@ -10,9 +10,9 @@ urlpatterns = [
     url(r'^dlt/(?P<pk>\d+)/$',HorarioDeleteView.as_view(), name='eliminar_horario'),
     # url(r'^api', HorarioList.as_view(), name='horario-list'),
     # urls de las APIS
-    url(r'^lstapi$',HorarioListAPIView.as_view(), name="lstapi"),
-    url(r'^lstaapi$',HorarioAPI.as_view(), name="lstaapi"),
-    url(r'^add-api$',HorarioCreateView.as_view(),name="add-api"),
+    url(r'^lstapi',HorarioListAPIView.as_view(), name="lstapi"),
+    url(r'^lstaapi',HorarioAPI.as_view(), name="lstaapi"),
+    url(r'^add-api',HorarioCreateView.as_view(),name="add-api"),
     url(r'^upd-api/(?P<pk>\d+)/$',HorarioCreateView.as_view(),name="upd-api"),
     url(r'^dlt-api/(?P<pk>\d+)/$',HorarioDeleteAPIView.as_view(),name="dlt-api"),
 

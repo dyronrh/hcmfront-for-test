@@ -2,7 +2,7 @@ from django.shortcuts import render
 from jornada.models import JornadaClass
 from django.views.generic import ListView
 
-# Create your views here.
+# Creando las vistas de la app Buscar.
 class BuscarList(ListView):
 	# queryset = Product.objects.all()
 	template_name = "buscar/views.html"
